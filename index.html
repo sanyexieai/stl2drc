@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STL/DRC 转换与预览</title>
+    <style>
+        body { margin: 0; }
+        .container-wrapper {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+        .container {
+            width: 50%;
+            height: 100vh;
+        }
+        #controls {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(255,255,255,0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .label {
+            position: fixed;
+            background: rgba(255,255,255,0.8);
+            padding: 5px;
+            border-radius: 3px;
+        }
+        #originalLabel {
+            top: 10px;
+            left: 25%;
+            transform: translateX(-50%);
+        }
+        #convertedLabel {
+            top: 10px;
+            left: 75%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <input type="file" id="fileInput" accept=".stl,.drc">
+        <button id="convertToDraco">转换为DRC</button>
+        <button id="convertToStl">转换为STL</button>
+        <button id="downloadFile">下载转换后的文件</button>
+    </div>
+    <div class="container-wrapper">
+        <div id="originalContainer" class="container"></div>
+        <div id="convertedContainer" class="container"></div>
+    </div>
+    <div id="originalLabel" class="label">原始模型</div>
+    <div id="convertedLabel" class="label">转换后模型</div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.150.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.150.0/examples/jsm/",
+          "draco3d": "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
+        }
+      }
+    </script>
+    <script type="module" src="app.js"></script>
+</body>
+</html> 
